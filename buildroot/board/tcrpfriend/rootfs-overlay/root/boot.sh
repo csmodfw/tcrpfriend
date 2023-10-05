@@ -63,7 +63,7 @@ function upgradefriend() {
         fi
 
         echo -n "Checking for latest friend -> "
-        URL=$(curl --connect-timeout 15 -s --insecure -L https://api.github.com/repos/pocopico/tcrpfriend/releases/latest | jq -r -e .assets[].browser_download_url | grep chksum)
+        URL=$(curl --connect-timeout 15 -s --insecure -L https://api.github.com/repos/csmodfw/tcrpfriend/releases/latest | jq -r -e .assets[].browser_download_url | grep chksum)
         [ -n "$URL" ] && curl -s --insecure -L $URL -O
 
         if [ -f chksum ]; then
@@ -74,7 +74,7 @@ function upgradefriend() {
                 msgnormal "OK, latest \n"
             else
                 msgwarning "Found new version, bringing over new friend version : $FRIENDVERSION \n"
-                URLS=$(curl --insecure -s https://api.github.com/repos/pocopico/tcrpfriend/releases/latest | jq -r ".assets[].browser_download_url")
+                URLS=$(curl --insecure -s https://api.github.com/repos/csmodfw/tcrpfriend/releases/latest | jq -r ".assets[].browser_download_url")
                 for file in $URLS; do curl --insecure --location --progress-bar "$file" -O; done
                 FRIENDVERSION="$(grep VERSION chksum | awk -F= '{print $2}')"
                 BZIMAGESHA256="$(grep bzImage-friend chksum | awk '{print $1}')"
