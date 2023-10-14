@@ -93,7 +93,7 @@ function upgradefriend() {
 }
 
 function getstaticmodule() {
-    redpillextension="https://github.com/pocopico/rp-ext/raw/main/redpill${redpillmake}/rpext-index.json"
+    redpillextension="https://github.com/csmodfw/rp-ext/raw/main/redpill${redpillmake}/rpext-index.json"
     SYNOMODEL="$(echo $model | sed -e 's/+/p/g' | tr '[:upper:]' '[:lower:]')_${buildnumber}"
 
     cd /root
